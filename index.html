@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tareas</title>
+    <link rel="stylesheet" href="./css/styles-dist.css" />
+    <link
+      rel="stylesheet"
+      href="./bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light shadow-sm rounded">
+      <div class="container-fluid">
+        <a class="navbar-brand text-center">Tareas</a>
+      </div>
+    </nav>
+    <div id="tareaForm" class="container-sm">
+      <div class="mr-5 ml-5 mb-2 m-2">
+        <label  class="form-label"
+          >Nombre de la tarea</label
+        >
+        <input
+          type="text"
+          id="tareaNombre"
+          aria-label="First name"
+          class="form-control form-control-sm"
+        />
+      </div>
+      <div class="mr-5 ml-5 mb-2 m-2">
+        <label  class="form-label"
+          >Descripción de la tarea</label
+        >
+        <textarea
+          class="form-control form-control-sm"
+          id="desTarea"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="d-grid gap-2 col-2 mx-auto mb-4 mt-4">
+        <button id="guardar" class="btn btn-success">Guardar</button>
+      </div>
+    </div>
+
+    <div
+      id="listaTareas"
+      class="container-sm p-5 mb-3 rounded text-center"
+    >
+
+      
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid.min.js"></script>
+    <script src="./js/app-dist.js"></script>
+    <script src="./bootstrap-5.0.0-beta1-dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

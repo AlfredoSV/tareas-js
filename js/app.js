@@ -1,0 +1,98 @@
+(() => {
+    "use strict";
+
+    const listaTareas = document.querySelector("#listaTareas");
+    const nombreTarea = document.querySelector("#tareaNombre");
+    const desTarea = document.querySelector("#desTarea");
+    const actualizarTareas = () => {
+        listaTareas.innerHTML = '';
+        tareas.forEach((tarea) => {
+            
+            agregarAListaTareas(tarea);
+
+        });
+
+        const btnBorr = document.querySelectorAll(".btn-danger");
+
+        btnBorr.forEach(function (elemento) {
+            elemento.addEventListener("click", function (e) {
+                tareas.splice(tareas.indexOf(e.target.id));
+                localStorage.setItem('tareas', JSON.stringify(tareas));
+
+                actualizarTareas();
+                if(!(localStorage.getItem("tareas") && JSON.parse(localStorage.getItem("tareas")).length > 0)){
+                    const img =document.createElement("img");
+                    img.src = '../img/vacio.png';
+                    img.width = 100;
+                    img.height = 100;
+                    img.classList = 'img-fluid';
+                    listaTareas.appendChild(img);
+                }
+                e.preventDefault();
+            });
+        });
+
+    }
+
+    
+    
+    const agregarAListaTareas = (tarea) => {
+        const card = document.createElement("div");
+        card.id = tarea.id;
+        card.classList = "card mb-5";
+        const cardH = document.createElement("div");
+        cardH.classList = "card-header";
+        cardH.innerText = tarea.nombre;
+        card.appendChild(cardH);
+
+        const cardB = document.createElement("div");
+        cardB.classList = "card-body";
+        card.appendChild(cardB);
+
+        const pDes = document.createElement("p");
+        pDes.classList = "card-text";
+        pDes.innerText = tarea.descrip;
+        cardB.appendChild(pDes);
+
+        const bEli = document.createElement("button");
+        bEli.classList = "btn btn-danger";
+        bEli.innerText = "Eliminar"
+        bEli.id = tarea.id;
+        cardB.appendChild(bEli);
+
+
+        listaTareas.appendChild(card);
+    }
+
+
+    document.querySelector("#guardar").addEventListener("click", function (e) {
+        if (nombreTarea.value != '' && desTarea.value != '') {
+
+            tareas.push({ id: uuid.v4(), nombre: nombreTarea.value, descrip: desTarea.value })
+            actualizarTareas();
+            localStorage.setItem('tareas', JSON.stringify(tareas));
+            nombreTarea.value = "";
+            desTarea.value = "";
+        } else {
+            alert("Favor de llenar todos lo campos");
+        }
+        e.preventDefault();
+    });
+
+    let tareas=[];
+
+    if(localStorage.getItem("tareas") && JSON.parse(localStorage.getItem("tareas")).length > 0){
+        tareas = JSON.parse(localStorage.getItem("tareas"));      
+        actualizarTareas();
+    }else{
+        
+        const img =document.createElement("img");
+        img.src = '../img/vacio.png';
+        img.width = 100;
+        img.height = 100;
+        img.classList = 'img-fluid';
+        listaTareas.appendChild(img);
+    }
+
+
+})();
