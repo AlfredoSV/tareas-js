@@ -87,7 +87,7 @@
     }else{
         
         const img =document.createElement("img");
-        img.src = './img/vacio.png';
+        img.src = '../img/vacio.png';
         img.width = 100;
         img.height = 100;
         img.classList = 'img-fluid';
