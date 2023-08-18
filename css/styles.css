@@ -4,5 +4,20 @@ body{
 }
 
 #listaTareas{
-    background-color: #6894C6;
+    background-color: rgb(41, 69, 111);
+}
+
+.body{
+    background-color: #cCc;
+}
+
+#tareaForm{
+    width: 50%;
+}
+
+#listaTareas{
+    width: 60%;
+    border-radius: 100px;
+    height: 510px;
+    overflow-y: scroll;
 }
